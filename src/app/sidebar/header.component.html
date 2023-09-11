@@ -1,0 +1,14 @@
+<header
+  class="header"
+  (mouseenter)="togleSideBar()"
+  (mouseleave)="togleSideBar()"
+>
+  <nav class="nav-header">
+  <app-sidebar-item *ngFor="let item of sidebarItens"
+    [title]="item.name"
+    [route]="item.route"
+    [expanded]="expanded"
+  >
+  </app-sidebar-item>
+  </nav>
+</header>

@@ -8,6 +8,29 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   expanded: boolean = false;
 
+  sidebarItens = [
+    {
+      route: '/dashboard',
+      name: 'Dashboard',
+      icon: '',
+    },
+    {
+      route: '/products',
+      name: 'Products',
+      icon: '',
+    },
+    {
+      route: '/banners',
+      name: 'Banners',
+      icon: '',
+    },
+    {
+      route: '/security',
+      name: 'Security',
+      icon: '',
+    },
+  ];
+
   togleSideBar() {
     const sidebar = document.querySelector('.header');
     this.expanded = !this.expanded;
