@@ -82,7 +82,13 @@
     <div class="background-dark"></div>
 
     <div class="slider-images">
-      <img [src]="getBackgroundImageUrl()" alt="" class="background-image" />
+      <img
+        [ngSrc]="getBackgroundImageUrl()"
+        priority
+        fill
+        alt=""
+        class="background-image"
+      />
     </div>
   </div>
 
@@ -102,7 +108,14 @@
       (beforeChange)="beforeChange($event)"
     >
       <div ngxSlickItem *ngFor="let movie of popularMovies" class="slide">
-        <img [src]="defaultImageUrl + movie.poster_path" alt="" class="img" />
+        <img
+          priority
+          width="180"
+          height="270"
+          [ngSrc]="defaultImageUrl + movie.poster_path"
+          alt=""
+          class="img"
+        />
       </div>
     </ngx-slick-carousel>
   </div>

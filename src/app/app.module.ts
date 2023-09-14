@@ -10,6 +10,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ToastService, AngularToastifyModule } from 'angular-toastify';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ToastService, AngularToastifyModule } from 'angular-toastify';
     FormsModule,
     AngularToastifyModule,
     SlickCarouselModule,
+    NgOptimizedImage,
   ],
   providers: [ToastService],
   bootstrap: [AppComponent],

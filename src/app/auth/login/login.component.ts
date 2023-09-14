@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from 'src/environments/environment';
 import { catchError, switchMap } from 'rxjs/operators';
 import { ToastService } from 'angular-toastify';
 import { Router } from '@angular/router';
@@ -90,16 +90,12 @@ export class LoginComponent implements OnInit {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTQyOTY4YTZkODgyMThmMTk2OTlmNzRmODQ5OGVkOSIsInN1YiI6IjY0ZmY3N2NjZTBjYTdmMDEyZWI4NDg1OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PsrSrMMAjZdto7_EAEzSgZ0V-RDgC6vGfstQZgFfyFU',
+        Authorization: `Bearer ${environment.bearerToken}`,
       },
     };
 
     return this.http
-      .get(
-        'https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1',
-        options
-      )
+      .get(`${environment.apiURL}movie/popular?language=pt-BR&page=1`, options)
       .pipe(
         catchError((): any => {
           return this._toastService.error('Erro ao carregar os filmes');
@@ -111,7 +107,7 @@ export class LoginComponent implements OnInit {
   getToken() {
     return this.http
       .get(
-        'https://api.themoviedb.org/3/authentication/token/new?api_key=4542968a6d88218f19699f74f8498ed9'
+        `${environment.apiURL}authentication/token/new?api_key=${environment.apiKey}`
       )
       .pipe(
         catchError((): any => {
@@ -131,7 +127,7 @@ export class LoginComponent implements OnInit {
 
     return this.http
       .post(
-        'https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=4542968a6d88218f19699f74f8498ed9',
+        `${environment.apiURL}authentication/token/validate_with_login?api_key=${environment.apiKey}`,
         body
       )
       .pipe(
@@ -149,7 +145,7 @@ export class LoginComponent implements OnInit {
     };
     return this.http
       .post(
-        `https://api.themoviedb.org/3/authentication/session/new?api_key=4542968a6d88218f19699f74f8498ed9&request_token=${token}`,
+        `${environment.apiURL}authentication/session/new?api_key=${environment.apiKey}&request_token=${token}`,
         body
       )
       .pipe(

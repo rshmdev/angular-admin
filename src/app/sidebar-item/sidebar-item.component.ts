@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./sidebar-item.component.css'],
 })
 export class SidebarItemComponent {
-  @Input() expanded: boolean = false;
   @Input() title: string = '';
   @Input() route: string = '';
 }

@@ -1,14 +1,24 @@
-<header
-  class="header"
-  (mouseenter)="togleSideBar()"
-  (mouseleave)="togleSideBar()"
->
+<header class="header">
   <nav class="nav-header">
-  <app-sidebar-item *ngFor="let item of sidebarItens"
-    [title]="item.name"
-    [route]="item.route"
-    [expanded]="expanded"
-  >
-  </app-sidebar-item>
+    <app-sidebar-item
+      *ngFor="let item of sidebarItens"
+      [title]="item.name"
+      [route]="item.route"
+    >
+    </app-sidebar-item>
   </nav>
+  <div class="info">
+    <button class="circle-info">
+      <ng-container
+        *ngIf="userInfo?.avatar?.tmdb.avatar_path !== null; else noAvatar"
+      >
+        <img [src]="userInfo?.avatar?.tmdb.avatar_path" alt="Avatar" />
+      </ng-container>
+      <ng-template #noAvatar>
+        <span class="username">{{
+          userInfo?.username?.charAt(0) | uppercase
+        }}</span>
+      </ng-template>
+    </button>
+  </div>
 </header>

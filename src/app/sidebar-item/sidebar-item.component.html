@@ -1,14 +1,12 @@
 <aside [routerLink]="[route]" class="aside">
   <div class="item-wrapper">
-    <span [ngClass]="{ active: expanded }">
+    <span>
       <img
-        [ngClass]="{ active: expanded }"
         width="30"
         height="30"
         src="../../assets/dashboard.png"
         alt="dashboard icon"
       />
-      <p [ngClass]="{ active: expanded }">{{ expanded ? title : "" }}</p>
     </span>
   </div>
 </aside>
