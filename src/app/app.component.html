@@ -1,6 +1,10 @@
 <main>
-  <app-header></app-header>
-  <section class="view">
-    <router-outlet></router-outlet>
+  <ng-container *ngIf="!isLoginPage">
+    <app-header></app-header>
+  </ng-container>
+  <section ngClass="{{ !isLoginPage ? 'view' : 'viewLogin' }}">
+    <router-outlet> </router-outlet>
   </section>
+
+  <lib-toastify-toast-container></lib-toastify-toast-container>
 </main>

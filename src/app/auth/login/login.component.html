@@ -1,1 +1,109 @@
-<p>login works!</p>
+<div class="wrapper">
+  <header>
+    <nav>
+      <button
+        class="btn-login"
+        onclick="document.getElementById('id01').style.display='flex'"
+      >
+        LOG IN
+      </button>
+      <a
+        href="https://www.themoviedb.org/signup"
+        target="_blank"
+        class="a-register"
+        >REGISTRAR</a
+      >
+    </nav>
+  </header>
+
+  <div class="modal-background" id="id01">
+    <form class="modal-content animate" method="POST">
+      <div class="imgcontainer">
+        <span
+          onclick="document.getElementById('id01').style.display='none'"
+          class="close"
+          title="Close Modal"
+          >&times;</span
+        >
+      </div>
+      <h1>LOGIN</h1>
+
+      <div class="container">
+        <!-- Username -->
+        <div>
+          <label for="uname"><b>Usuario</b></label>
+          <div class="username-input">
+            <img src="../../../assets/user.png" alt="Avatar" class="avatar" />
+            <input
+              type="text"
+              placeholder="Nome de usuario"
+              name="uname"
+              [(ngModel)]="username"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="psw"><b>Senha</b></label>
+
+          <div class="password-input">
+            <img src="../../../assets/lock.png" alt="Avatar" class="avatar" />
+
+            <input
+              type="password"
+              placeholder="Insira sua senha"
+              name="psw"
+              [(ngModel)]="password"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="label-remember">
+          <input
+            class="remember"
+            type="checkbox"
+            checked="checked"
+            name="remember"
+          />Lembrar
+        </div>
+        <div class="forgot-pass">
+          <a target="_blank" href="https://www.themoviedb.org/reset-password"
+            >Esqueceu a senha ?</a
+          >
+        </div>
+        <button type="submit" (click)="startProcess()">LOGIN</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="background-slider">
+    <div class="background-dark"></div>
+
+    <div class="slider-images">
+      <img [src]="getBackgroundImageUrl()" alt="" class="background-image" />
+    </div>
+  </div>
+
+  <div class="text-login">
+    <h1>Encontre os melhores filmes e séries de forma fácil e rápida.</h1>
+    <p>Não perca mais tempo buscando em catálogos extensos e intermináveis.</p>
+  </div>
+
+  <div class="container-slider">
+    <ngx-slick-carousel
+      class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig"
+      (init)="slickInit($event)"
+      (breakpoint)="breakpoint($event)"
+      (afterChange)="afterChange($event)"
+      (beforeChange)="beforeChange($event)"
+    >
+      <div ngxSlickItem *ngFor="let movie of popularMovies" class="slide">
+        <img [src]="defaultImageUrl + movie.poster_path" alt="" class="img" />
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</div>
